@@ -1,1 +1,3 @@
 # TimedOwnershipNFT
+
+LOTS OF CODE ARE PENDING CLEAN UP!
