@@ -7,10 +7,10 @@ This is the demo of the timed ownership NFT market place. The website is built o
 Keeper that's registered on Chainlink Keepers to keep the timed owner data and interact with NFT smart contract to trigger transfer action when the timed ownership is due.
 
 ## YourCollectible.sol
-The NFT contract that support Timed ownership
+The NFT contract that supports Timed ownership
 
 
 # How to run
 yarn start and yarn deploy
 
-Note that the listing data is implemented and store in AWS.
+Note that the listing data is implemented and stores in AWS.
