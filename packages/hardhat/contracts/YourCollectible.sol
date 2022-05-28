@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "hardhat/console.sol";
 
-contract TimedOwnershipNTF is
+contract YourCollectible is
     ERC721,
     ERC721Enumerable,
     ERC721URIStorage,
@@ -28,6 +28,7 @@ contract TimedOwnershipNTF is
 
 
     constructor(address keeperContractAddress) ERC721("YourCollectible", "YCB") {
+            // inject keeper address
             KEEPER_CONTRACT_ADDRESS = keeperContractAddress;
 
     }
@@ -111,11 +112,10 @@ contract TimedOwnershipNTF is
         address from,
         address to,
         uint256 tokenId,
-        uint256 expireTime,
-        address keeperContract
+        uint256 expireTime
     ) public virtual{
         // new code. only the sudo owner can do timed tranfer 
-        require(from == _sudoOwner[tokenId], "ERC721: the from address is not the sudo owner");
+        require(from == _sudoOwner[tokenId], "ERC721: the from address is not the cool sudo owner");
         
         // new code. sudo owner can't transfer if there's a timed owner
         require(_timedOwner[tokenId] == address(0), "ERC721: token currently has timed owner");
@@ -129,7 +129,7 @@ contract TimedOwnershipNTF is
 
         // new code, schedule a keeper
         console.log("sweet let's schedule a keeper");
-        KeeperContract keeperContract = KeeperContract(keeperContract);
+        KeeperContract keeperContract = KeeperContract(KEEPER_CONTRACT_ADDRESS);
         keeperContract.addRentData(from, to, tokenId, address(this), block.timestamp, expireTime);
         console.log("add rent data is done");
     }
