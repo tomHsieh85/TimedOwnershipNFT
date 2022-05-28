@@ -13,4 +13,4 @@ The NFT contract that supports Timed ownership
 # How to run
 yarn start and yarn deploy
 
-Note that the listing data is implemented and stores in AWS.
+Note that the listing data is implemented and stored in AWS.
